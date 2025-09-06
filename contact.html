@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>GMEDIA — Contact</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Calendly CSS + JS -->
+  <!-- Calendly popup widget -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
@@ -22,10 +22,11 @@
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
-    <div class="nav-cta" style="margin-left:auto">
-      <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/gmediaagency01/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;" class="btn">
+    <div style="display:flex;gap:10px;align-items:center">
+      <a class="btn" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/gmediaagency01/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
         Book a Call
       </a>
+      <button class="hamburger" id="hamburger" aria-label="menu">☰</button>
     </div>
   </div>
 </header>
@@ -35,8 +36,8 @@
     <h1 class="fade-up">Contact Us</h1>
     <p class="lead fade-up">Reach out for collaborations, support, or inquiries.</p>
 
-    <!-- Restore your contact form or details here -->
-    <form class="fade-up" style="margin-top:20px">
+    <!-- Formspree-enabled form -->
+    <form action="https://formspree.io/f/mkgvkgeq" method="POST" class="fade-up" style="margin-top:20px">
       <label>Name</label><br>
       <input type="text" name="name" required><br><br>
 
@@ -46,6 +47,9 @@
       <label>Message</label><br>
       <textarea name="message" rows="5" required></textarea><br><br>
 
+      <!-- Optional: Redirect to thank-you page after submission -->
+      <!-- <input type="hidden" name="_next" value="thank-you.html"> -->
+
       <button type="submit" class="btn">Send Message</button>
     </form>
 
@@ -54,17 +58,32 @@
 
 <footer>
   <div class="container">
-    <p>© <span id="y"></span> GMEDIA</p>
+    <p>© <span id="y"></span> GMEDIA — Pro AI Automation</p>
+    <p style="color:var(--muted);margin:0">gmediaagency01@gmail.com • Remote, California</p>
   </div>
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('y').textContent = new Date().getFullYear();
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.fade-up').forEach((el, i) =>
-      setTimeout(() => el.classList.add('in'), 80 * i)
-    );
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('in');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  const ham = document.getElementById('hamburger');
+  ham && ham.addEventListener('click', () => {
+    const ul = document.querySelector('nav ul');
+    if (ul.style.display === 'flex') {
+      ul.style.display = 'none';
+    } else {
+      ul.style.display = 'flex';
+      ul.style.flexDirection = 'column';
+      ul.style.gap = '12px';
+    }
   });
+});
 </script>
 </body>
 </html>
