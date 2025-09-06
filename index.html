@@ -1,11 +1,12 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GMEDIA — Pro AI Automation Agency</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GMEDIA — Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
 <header>
@@ -13,100 +14,37 @@
     <div class="logo">GMEDIA</div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="testimonials.html">Testimonials</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <div style="display:flex;gap:10px;align-items:center">
-      <a class="btn" href="https://calendly.com/gmedia/meeting" target="_blank" rel="noopener">Book a Call</a>
-      <button class="hamburger" id="hamburger" aria-label="menu">☰</button>
+    <div class="nav-cta" style="margin-left:auto">
+      <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/gmediaagency01/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;" class="btn">Book a Call</a>
     </div>
   </div>
 </header>
 
 <main class="container">
-  <section class="hero">
-    <div>
-      <div class="badge" style="display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));font-weight:700;color:#04101a">AI Automation</div>
-      <h1 class="fade-up">We automate content, chatbots & customer flows so creators scale faster.</h1>
-      <p class="lead fade-up">GMEDIA helps influencers, coaches, and brands publish better content and automate customer touchpoints using AI workflows — without hiring a full team.</p>
-      <div style="margin-top:18px" class="stagger">
-        <a class="btn" href="https://calendly.com/gmedia/meeting" target="_blank" rel="noopener">Book a Call</a>
-        <a class="btn secondary" href="services.html" style="background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.05);">View Services</a>
-      </div>
-    </div>
-    <aside class="hero-card fade-up">
-      <h3 style="margin-top:0">Start faster — free 15‑minute audit</h3>
-      <p class="lead" style="margin-bottom:12px">We’ll review your content stack and give 3 quick wins you can implement this week.</p>
-      <div style="display:flex;gap:10px">
-        <a class="btn" href="https://calendly.com/gmedia/meeting" target="_blank" rel="noopener">Book a Call</a>
-        <a class="btn secondary" href="contact.html">Contact</a>
-      </div>
-    </aside>
-  </section>
-
   <section>
-    <h2 class="fade-up">Featured Services</h2>
-    <div class="grid stagger">
-      <div class="card fade-up">
-        <div class="service-title"><div class="icon">V</div><div><strong>AI Video Automation</strong></div></div>
-        <p class="lead">Faceless videos, scripts, and automated editing pipelines so you can post daily without burning out.</p>
-      </div>
-      <div class="card fade-up">
-        <div class="service-title"><div class="icon">C</div><div><strong>AI Chatbots & DM Flows</strong></div></div>
-        <p class="lead">Automate DMs, lead capture, and FAQ responses for Instagram, websites, and other channels.</p>
-      </div>
-      <div class="card fade-up">
-        <div class="service-title"><div class="icon">D</div><div><strong>Design & Thumbnails</strong></div></div>
-        <p class="lead">High-converting thumbnails and creative assets generated and A/B tested for CTR lift.</p>
-      </div>
-    </div>
+    <h1 class="fade-up">Welcome to GMEDIA</h1>
+    <p class="lead fade-up">AI-powered automation to help creators and small brands grow faster with less effort.</p>
   </section>
-
-  <section>
-    <h2 class="fade-up">Why creators choose GMEDIA</h2>
-    <div class="grid">
-      <div class="card fade-up"><h3>Save time</h3><p class="lead">Automations free up hours per week so creators can do high-return work.</p></div>
-      <div class="card fade-up"><h3>Scale reliably</h3><p class="lead">Repeatable processes that increase output without sacrificing quality.</p></div>
-      <div class="card fade-up"><h3>Data driven</h3><p class="lead">We track performance and optimize thumbnails, hooks, and posting cadence.</p></div>
-    </div>
-  </section>
-
 </main>
 
 <footer>
   <div class="container">
-    <p style="margin:10px 0 6px">© <span id="y"></span> GMEDIA — Pro AI Automation</p>
-    <p style="color:var(--muted);margin:0">gmediaagency01@gmail.com • Remote, California</p>
+    <p>© <span id="y"></span> GMEDIA</p>
   </div>
 </footer>
 
 <script>
-// Simple entrance animation observer
-document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('y').textContent = new Date().getFullYear();
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); }
-    });
-  },{threshold:0.12});
-  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-  // stagger children
-  document.querySelectorAll('.stagger').forEach(container=>{
-    const children=[...container.children];
-    children.forEach((c,i)=>{ setTimeout(()=>c.classList.add('in'), 120*i+80); });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.fade-up').forEach((el, i) => setTimeout(() => el.classList.add('in'), 80*i));
   });
-  // hamburger toggle for mobile
-  const ham = document.getElementById('hamburger');
-  ham && ham.addEventListener('click', ()=>{
-    const ul = document.querySelector('nav ul');
-    if(ul.style.display==='flex'){ ul.style.display='none'; }
-    else { ul.style.display='flex'; ul.style.flexDirection='column'; ul.style.gap='12px'; }
-  });
-});
 </script>
 </body>
 </html>
