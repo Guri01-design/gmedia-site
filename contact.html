@@ -19,13 +19,13 @@
         <li><a href="testimonials.html">Testimonials</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
-        <li>
-          <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/gmediaagency01/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;" class="btn">
-            Book a Call
-          </a>
-        </li>
       </ul>
     </nav>
+    <div class="nav-cta" style="margin-left:auto">
+      <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/gmediaagency01/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;" class="btn">
+        Book a Call
+      </a>
+    </div>
   </div>
 </header>
 
@@ -33,6 +33,7 @@
   <section>
     <h1 class="fade-up">Contact Us</h1>
     <p class="lead fade-up">Reach out for collaborations, support, or inquiries.</p>
+    <!-- Add your contact form or details here -->
   </section>
 </main>
 
@@ -43,7 +44,7 @@
 </footer>
 
 <script>
-  document.getElementById('y').textContent=new Date().getFullYear();
+  document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
