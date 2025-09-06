@@ -1,0 +1,15 @@
+
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GMEDIA — Testimonials</title><link rel="stylesheet" href="style.css"></head><body>
+<header><div class="container nav"><div class="logo">GMEDIA</div><nav><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="testimonials.html" class="active">Testimonials</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav><div style="display:flex;gap:10px;align-items:center"><a class="btn" href="https://calendly.com/gmedia/meeting" target="_blank" rel="noopener">Book a Call</a><button class="hamburger" id="hamburger">☰</button></div></div></header>
+<main class="container">
+  <section><h1 class="fade-up">What creators say</h1></section>
+  <section class="testimonials stagger">
+    <div class="card fade-up"><p class="quote">“GMEDIA’s automation saved me 15+ hours a week. I stopped burning out and started scaling.”</p><p style="margin-top:10px"><strong>— Sarah K., Fitness Creator</strong></p></div>
+    <div class="card fade-up"><p class="quote">“Their chatbot handled DMs and bookings seamlessly — better conversions than I expected.”</p><p style="margin-top:10px"><strong>— David R., E‑commerce</strong></p></div>
+    <div class="card fade-up"><p class="quote">“Thumbnails and A/B testing lifted my CTR by 40% in 2 weeks.”</p><p style="margin-top:10px"><strong>— Maya L., Lifestyle Creator</strong></p></div>
+    <div class="card fade-up"><p class="quote">“The team gets creators — fast, affordable and strategic.”</p><p style="margin-top:10px"><strong>— Alex M., Gaming</strong></p></div>
+  </section>
+</main>
+<footer><div class="container"><p>© <span id="y"></span> GMEDIA</p></div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),90*i));const ham=document.getElementById('hamburger');ham&&ham.addEventListener('click',()=>{const ul=document.querySelector('nav ul');ul.style.display=ul.style.display==='flex'?'none':'flex';ul.style.flexDirection='column';});});</script></body></html>
