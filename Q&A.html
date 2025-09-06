@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GMEDIA — Q&A</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Calendly popup widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <style>
+    .qa-section { margin-top: 30px; }
+    .qa-item { margin-bottom: 20px; padding: 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; }
+    .qa-item h3 { margin: 0 0 8px; color: var(--accent1); }
+    .qa-item p { margin: 0; color: var(--text); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo">GMEDIA</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="qa.html" class="active">Q&A</a></li>
+      </ul>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center">
+      <a class="btn" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/gmediaagency01/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">Book a Call</a>
+      <button class="hamburger" id="hamburger" aria-label="menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="qa-section">
+    <h1 class="fade-up">Frequently Asked Questions</h1>
+
+    <div class="qa-item fade-up">
+      <h3>Q: What is GMEDIA?</h3>
+      <p>A: GMEDIA is an AI automation agency that helps influencers, coaches, and businesses save time and scale faster using AI-powered tools for content creation, customer support, and lead automation.</p>
+    </div>
+
+    <div class="qa-item fade-up">
+      <h3>Q: What services do you offer?</h3>
+      <p>A: We offer AI content creation (scripts, voiceovers, faceless videos), automated chatbots, social media automation, email follow-ups, and lead capture systems.</p>
+    </div>
+
+    <div class="qa-item fade-up">
+      <h3>Q: Who do you work with?</h3>
+      <p>A: We primarily work with influencers, personal coaches, and small businesses who want to automate content, boost engagement, and streamline customer interactions using AI.</p>
+    </div>
+
+    <div class="qa-item fade-up">
+      <h3>Q: Do you offer free trials or demos?</h3>
+      <p>A: Yes! We offer free demos including AI-generated videos and chatbot previews. Reach out via our contact page to request one.</p>
+    </div>
+
+    <div class="qa-item fade-up">
+      <h3>Q: What is included in the Starter Plan?</h3>
+      <p>A: The Starter Plan includes 4 AI-generated videos, 2 custom thumbnails, and a basic chatbot setup for DMs or websites.</p>
+    </div>
+
+    <div class="qa-item fade-up">
+      <h3>Q: Can you create faceless videos for my brand?</h3>
+      <p>A: Absolutely. We generate video scripts with AI, add realistic AI voiceovers, and use stock footage to create branded, faceless short-form videos.</p>
+    </div>
+
+    <div class="qa-item fade-up">
+      <h3>Q: How do your chatbots work?</h3>
+      <p>A: Our chatbots are trained on your business info or FAQ documents and can reply to customer questions 24/7 on your website or Instagram/Facebook.</p>
+    </div>
+
+    <div class="qa-item fade-up">
+      <h3>Q: Can I use your services if I’m just starting out?</h3>
+      <p>A: Yes! GMEDIA works with both beginner creators and established brands. We’ll help you automate early and grow faster.</p>
+    </div>
+
+    <div class="qa-item fade-up">
+      <h3>Q: How do I get started?</h3>
+      <p>A: Contact us via email (gmediaagency01@gmail.com). You can also request a free consultation.</p>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p style="margin:10px 0 6px">© <span id="y"></span> GMEDIA — Pro AI Automation</p>
+    <p style="color:var(--muted);margin:0">gmediaagency01@gmail.com • Remote, California</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('y').textContent = new Date().getFullYear();
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  const ham = document.getElementById('hamburger');
+  ham && ham.addEventListener('click', ()=>{
+    const ul = document.querySelector('nav ul');
+    if(ul.style.display==='flex'){ ul.style.display='none'; }
+    else { ul.style.display='flex'; ul.style.flexDirection='column'; ul.style.gap='12px'; }
+  });
+});
+</script>
+</body>
+</html>
