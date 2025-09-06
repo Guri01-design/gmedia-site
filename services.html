@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>GMEDIA — Services</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Calendly popup widget -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
@@ -21,35 +22,73 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <div class="nav-cta" style="margin-left:auto">
-      <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/gmediaagency01/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;" class="btn">Book a Call</a>
+    <div style="display:flex;gap:10px;align-items:center">
+      <!-- Calendly popup -->
+      <a class="btn" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/gmediaagency01/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">Book a Call</a>
+      <button class="hamburger" id="hamburger" aria-label="menu">☰</button>
     </div>
   </div>
 </header>
 
 <main class="container">
-  <section>
+  <section class="hero">
     <h1 class="fade-up">Our Services</h1>
-    <p class="lead fade-up">We provide AI automation solutions for creators, coaches, and small brands.</p>
-    <ul class="fade-up">
-      <li>AI video & content creation</li>
-      <li>Custom chatbots & automation</li>
-      <li>Workflow & scheduling systems</li>
-    </ul>
+    <p class="lead fade-up">We help influencers, coaches, and brands automate growth with AI systems tailored to their workflow.</p>
+    <div style="margin-top:18px" class="stagger">
+      <!-- Calendly popup -->
+      <a class="btn" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/gmediaagency01/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">Book a Call</a>
+      <a class="btn secondary" href="contact.html" style="background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.05);">Contact Us</a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="fade-up">What We Offer</h2>
+    <div class="grid stagger">
+      <div class="card fade-up">
+        <h3>AI Video Automation</h3>
+        <p class="lead">Faceless videos, scripts, and automated editing pipelines so you can post daily without burning out.</p>
+      </div>
+      <div class="card fade-up">
+        <h3>AI Chatbots & DM Flows</h3>
+        <p class="lead">Automate DMs, lead capture, and FAQ responses for Instagram, websites, and other channels.</p>
+      </div>
+      <div class="card fade-up">
+        <h3>Design & Thumbnails</h3>
+        <p class="lead">High-converting thumbnails and creative assets generated and A/B tested for CTR lift.</p>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer>
   <div class="container">
-    <p>© <span id="y"></span> GMEDIA</p>
+    <p style="margin:10px 0 6px">© <span id="y"></span> GMEDIA — Pro AI Automation</p>
+    <p style="color:var(--muted);margin:0">gmediaagency01@gmail.com • Remote, California</p>
   </div>
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('y').textContent = new Date().getFullYear();
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.fade-up').forEach((el, i) => setTimeout(() => el.classList.add('in'), 80*i));
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  // stagger children
+  document.querySelectorAll('.stagger').forEach(container=>{
+    const children=[...container.children];
+    children.forEach((c,i)=>{ setTimeout(()=>c.classList.add('in'), 120*i+80); });
   });
+  // hamburger toggle for mobile
+  const ham = document.getElementById('hamburger');
+  ham && ham.addEventListener('click', ()=>{
+    const ul = document.querySelector('nav ul');
+    if(ul.style.display==='flex'){ ul.style.display='none'; }
+    else { ul.style.display='flex'; ul.style.flexDirection='column'; ul.style.gap='12px'; }
+  });
+});
 </script>
 </body>
 </html>
