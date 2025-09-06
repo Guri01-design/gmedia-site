@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>GMEDIA — Contact</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Calendly CSS + JS -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
@@ -33,7 +34,21 @@
   <section>
     <h1 class="fade-up">Contact Us</h1>
     <p class="lead fade-up">Reach out for collaborations, support, or inquiries.</p>
-    <!-- Add your contact form or details here -->
+
+    <!-- Restore your contact form or details here -->
+    <form class="fade-up" style="margin-top:20px">
+      <label>Name</label><br>
+      <input type="text" name="name" required><br><br>
+
+      <label>Email</label><br>
+      <input type="email" name="email" required><br><br>
+
+      <label>Message</label><br>
+      <textarea name="message" rows="5" required></textarea><br><br>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
   </section>
 </main>
 
@@ -45,6 +60,11 @@
 
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.fade-up').forEach((el, i) =>
+      setTimeout(() => el.classList.add('in'), 80 * i)
+    );
+  });
 </script>
 </body>
 </html>
